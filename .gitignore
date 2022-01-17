@@ -1,0 +1,7 @@
+\.vscode
+\build
+\.idea
+*.cpp
+*.pdb
+*.raw
+CMakeLists.txt
