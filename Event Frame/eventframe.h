@@ -21,7 +21,7 @@ template<int32_t width, int32_t height, int64_t delta_t>
 EventFrame<width, height, delta_t>::EventFrame(void){
     cv::Mat tmp(height,width,CV_8UC1, cv::Scalar(130));
     img = tmp;
-    cv::imshow("Display Events", img);
+    cv::imshow("Event Frame", img);
 }
 
 template<int32_t width, int32_t height, int64_t delta_t>
@@ -36,7 +36,7 @@ void EventFrame<width, height, delta_t>::ShowEvents(uint16_t x, uint16_t y, int1
 
     // check if image must be showed
     if(timestamp - elapsed_t> delta_t) {
-        cv::imshow("Display Events", img); //print the image
+        cv::imshow("Event Frame", img); //print the image
         memset(img.data, 130, (height-1)*width*1 + (width-1)*1); //reset the image
         elapsed_t = timestamp;
     }
