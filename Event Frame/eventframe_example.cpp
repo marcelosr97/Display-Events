@@ -13,7 +13,6 @@
 #define fps 25
 #define delta_t 40000
 
-Metavision::Camera cam = Metavision::Camera::from_file("numbers.raw"); // create the camera from raw file
 EventFrame<width, height, delta_t> eventframe;
 
 using namespace std::chrono;
