@@ -3,5 +3,4 @@
 \.idea
 *.cpp
 *.pdb
-*.raw
 CMakeLists.txt
