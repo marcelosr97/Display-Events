@@ -1,6 +1,5 @@
 \.vscode
 \build
 \.idea
-*.cpp
 *.pdb
 CMakeLists.txt
