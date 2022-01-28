@@ -1,5 +1,3 @@
 \.vscode
 \build
 \.idea
-*.pdb
-CMakeLists.txt
