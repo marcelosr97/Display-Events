@@ -32,8 +32,10 @@ Histogram<width, height, delta_t>::Histogram(void){
     hist_pos = tmp_hist_pos;
     hist_neg = tmp_hist_neg;
     // show first image
-    cv::imshow("Positive Histogram", hist_pos);    
-    cv::imshow("Negative Histogram", hist_neg);    
+    cv::imshow("Positive Histogram", hist_pos);
+    cv::moveWindow("Positive Histogram", 40,30);
+    cv::imshow("Negative Histogram", hist_neg);
+    cv::moveWindow("Negative Histogram", 40+width+10,30);    
 }
 
 template<int32_t width, int32_t height, int64_t delta_t>
