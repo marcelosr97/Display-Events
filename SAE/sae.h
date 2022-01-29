@@ -27,8 +27,10 @@ SAE<width, height, delta_t>::SAE(void){
     sae_pos = tmp_sae_pos;
     sae_neg = tmp_sae_neg;
     /* Show first image */
-    cv::imshow("Positive SAE", sae_pos);    
-    cv::imshow("Negative SAE", sae_neg);    
+    cv::imshow("Positive SAE", sae_pos);
+    cv::moveWindow("Positive SAE", 40,30);        
+    cv::imshow("Negative SAE", sae_neg);   
+    cv::moveWindow("Negative SAE", 40+width+10,30);        
 }
 
 template<int32_t width, int32_t height, int64_t delta_t>
