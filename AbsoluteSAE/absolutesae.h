@@ -35,9 +35,9 @@ void AbsoluteSAE<width, height, delta_t>::ShowEvents(uint16_t x, uint16_t y, int
         colour = (uint8_t)((timestamp - elapsed_t) * 255/delta_t);
 
         /* y * width * max channels + x * max channels + channel */
-        sae.data[y*width*3 + x*3] = 255 - (int)colour; /* RED CHANNEL */
-        sae.data[y*width*3 + x*3 + 1] = (int)0; /* GREEN CHANNEL */
-        sae.data[y*width*3 + x*3 + 2] = (int)colour; /* BLUE CHANNEL */
+        sae.data[y*width*3 + x*3] = (int)colour;            /* BLUE CHANNEL */
+        sae.data[y*width*3 + x*3 + 1] = (int)0;             /* GREEN CHANNEL */
+        sae.data[y*width*3 + x*3 + 2] = 255 - (int)colour;  /* RED CHANNEL */
 
         /* Check if an image must be printed */
         if(timestamp - elapsed_t > delta_t) {

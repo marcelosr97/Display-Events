@@ -45,21 +45,21 @@ void HistogramDiff<width, height, delta_t>::ShowEvents(uint16_t x, uint16_t y, i
         auto max_value = histdiff.maxCoeff();
         auto min_value = histdiff.minCoeff();
         if(min_value < 0){
-            min_value*=1;
+            min_value*=-1;
             if(min_value > max_value) max_value = min_value;
         }
         for(uint32_t index = 0; index < (height-1)*width + (width-1); index++){
             if(histdiff(index) == 0) continue;
             else{
                 if(histdiff(index) >= 0){
-                    histdiff_img.data[index*3] = 255 - (uint8_t)((double)histdiff(index)/(double)max_value * 255);      /* RED CHANNEL*/
-                    histdiff_img.data[index*3+1] = 0;                                                                   /* GREEN CHANNEL */
-                    histdiff_img.data[index*3+2] = (uint8_t)((double)histdiff(index)/(double)max_value * 255);          /* BLUE CHANNEL */
+                    histdiff_img.data[index*3] = (uint8_t)((double)histdiff(index)/(double)max_value * 255);    /* BLUE CHANNEL*/
+                    histdiff_img.data[index*3+1] = 0;                                                           /* GREEN CHANNEL */
+                    histdiff_img.data[index*3+2] = 0;                                                           /* RED CHANNEL */
                 }
                 else {
-                    histdiff_img.data[index*3] = (uint8_t)(-(double)histdiff(index)/(double)max_value * 255);            /* RED CHANNEL*/
-                    histdiff_img.data[index*3+1] = 0;                                                                   /* GREEN CHANNEL */
-                    histdiff_img.data[index*3+2] = (uint8_t)(255 + ((double)histdiff(index)/(double)max_value * 255));    /* BLUE CHANNEL */
+                    histdiff_img.data[index*3] = 0;                                                             /* BLUE CHANNEL*/
+                    histdiff_img.data[index*3+1] = 0;                                                           /* GREEN CHANNEL */
+                    histdiff_img.data[index*3+2] = (uint8_t)(-(double)histdiff(index)/(double)max_value * 255); /* RED CHANNEL */
                 }
             }
         }

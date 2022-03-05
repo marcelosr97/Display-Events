@@ -29,18 +29,18 @@ void EventFrame<width, height, delta_t>::ShowEvents(uint16_t x, uint16_t y, int1
 
     if(p){
     /* Build the image */
-    img.data[y*width*3 + x*3] = (int) 0;
-    img.data[y*width*3 + x*3 + 1] = (int) 0;
-    img.data[y*width*3 + x*3 + 2] = (int) 255;
+    img.data[y*width*3 + x*3] = (int) 255;      /* BLUE CHANNEL */
+    img.data[y*width*3 + x*3 + 1] = (int) 0;    /* GREEN CHANNEL */
+    img.data[y*width*3 + x*3 + 2] = (int) 0;    /* RED CHANNEL */
     }
     else {
     /* Build the image */
-    img.data[y*width*3 + x*3] = (int) 255;
-    img.data[y*width*3 + x*3 + 1] = (int) 0;
-    img.data[y*width*3 + x*3 + 2] = (int) 0;
+    img.data[y*width*3 + x*3] = (int) 0;        /* BLUE CHANNEL */
+    img.data[y*width*3 + x*3 + 1] = (int) 0;    /* GREEN CHANNEL */
+    img.data[y*width*3 + x*3 + 2] = (int) 255;  /* RED CHANNEL */
     }
 
-    // check if image must be showed
+    // check if image must be displayed
     if(timestamp - elapsed_t> delta_t) {
         cv::imshow("Event Frame", img); //print the image
         memset(img.data, 130, (height-1)*width*3 + (width-1)*3+2); //reset the image

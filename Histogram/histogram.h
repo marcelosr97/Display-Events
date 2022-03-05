@@ -35,7 +35,7 @@ Histogram<width, height, delta_t>::Histogram(void){
     cv::imshow("Positive Histogram", hist_pos);
     cv::moveWindow("Positive Histogram", 40,30);
     cv::imshow("Negative Histogram", hist_neg);
-    cv::moveWindow("Negative Histogram", 40+width+10,30);    
+    cv::moveWindow("Negative Histogram", 40+width,30);    
 }
 
 template<int32_t width, int32_t height, int64_t delta_t>
@@ -53,13 +53,13 @@ void Histogram<width, height, delta_t>::ShowEvents(uint16_t x, uint16_t y, int16
         for(uint32_t index = 0; index < (height-1)*width + (width-1); index++){
             if(hist_[0](index) == 0 || hist_[1](index) == 0) continue;
             else{
-            hist_pos.data[index*3] = 255 - (uint8_t)((double)hist_[1](index)/(double)max_pos * 255);  /* RED CHANNEL*/
-            hist_pos.data[index*3+1] = 0;                                                             /* GREEN CHANNEL */
-            hist_pos.data[index*3+2] = (uint8_t)((double)hist_[1](index)/(double)max_pos * 255);      /* BLUE CHANNEL */
+            hist_pos.data[index*3] = (uint8_t)((double)hist_[1](index)/(double)max_pos * 255);          /* BLUE CHANNEL*/
+            hist_pos.data[index*3+1] = 0;                                                               /* GREEN CHANNEL */
+            hist_pos.data[index*3+2] = 255 - (uint8_t)((double)hist_[1](index)/(double)max_pos * 255);  /* RED CHANNEL */
 
-            hist_neg.data[index*3] = 255 - (uint8_t)((double)hist_[0](index)/(double)max_neg * 255);  /* RED CHANNEL*/
-            hist_neg.data[index*3+1] = 0;                                                             /* GREEN CHANNEL */
-            hist_neg.data[index*3+2] = (uint8_t)((double)hist_[0](index)/(double)max_neg * 255);      /* BLUE CHANNEL */
+            hist_neg.data[index*3] = (uint8_t)((double)hist_[0](index)/(double)max_neg * 255);          /* BLUE CHANNEL*/
+            hist_neg.data[index*3+1] = 0;                                                               /* GREEN CHANNEL */
+            hist_neg.data[index*3+2] = 255 - (uint8_t)((double)hist_[0](index)/(double)max_neg * 255);  /* RED CHANNEL */
             }
         }
         /* Print images */

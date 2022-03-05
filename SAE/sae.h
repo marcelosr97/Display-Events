@@ -42,15 +42,15 @@ void SAE<width, height, delta_t>::ShowEvents(uint16_t x, uint16_t y, int16_t p, 
 
         /* y * width * max channels + x * max channels + channel */
         if(p) {
-            sae_pos.data[y*width*3 + x*3] = 255 - (int)colour; /* RED CHANNEL */
-            sae_pos.data[y*width*3 + x*3 + 1] = (int)0; /* GREEN CHANNEL */
-            sae_pos.data[y*width*3 + x*3 + 2] = (int)colour; /* BLUE CHANNEL */
+            sae_pos.data[y*width*3 + x*3] = colour;             /* BLUE CHANNEL */
+            sae_pos.data[y*width*3 + x*3 + 1] = 0;              /* GREEN CHANNEL */
+            sae_pos.data[y*width*3 + x*3 + 2] = 255 - colour;   /* RED CHANNEL */
 
         }
         else {
-            sae_neg.data[y*width*3 + x*3] = 255 - (int)colour; /* RED CHANNEL */
-            sae_neg.data[y*width*3 + x*3 + 1] = (int)0; /* GREEN CHANNEL */
-            sae_neg.data[y*width*3 + x*3 + 2] = (int)colour; /* BLUE CHANNEL */        
+            sae_neg.data[y*width*3 + x*3] = colour;             /* RED CHANNEL */
+            sae_neg.data[y*width*3 + x*3 + 1] = 0;              /* GREEN CHANNEL */
+            sae_neg.data[y*width*3 + x*3 + 2] = 255 - colour;   /* BLUE CHANNEL */        
         }
 
         /* Check if an image must be printed */
